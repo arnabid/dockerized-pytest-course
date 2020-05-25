@@ -46,7 +46,7 @@ class MapData():
         """
         if not self.updated_population_count():
             for row in self._data:
-                if row['Country'] in pop_map.keys():
+                if row['Country'] in pop_map:
                     row['Population'] = pop_map[row['Country']]
                 else:
                     row['Population'] = None

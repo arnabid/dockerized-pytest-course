@@ -13,14 +13,14 @@ def city_list_location():
 def process_data(city_list_location):
     files = os.listdir(city_list_location)
 
-    def _specify_type(file_name_or_type):
+    def _specify_type(filename):
         for f in files:
-            if file_name_or_type in f:
-                if file_name_or_type != '.json':
-                    data = data_processor.csv_reader(city_list_location + f)
-                else:
+            if filename == f:
+                if filename.endswith('.json'):
                     data = data_processor.json_reader(city_list_location + f)
-        return data
+                elif filename.endswith('.csv'):
+                    data = data_processor.csv_reader(city_list_location + f)
+                return data
 
     yield _specify_type
 
